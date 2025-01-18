@@ -1,0 +1,13 @@
+<div class="image-gallery-widget" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+    {% for group, options, index in widget.optgroups %}
+        {% for option in options %}
+            <div class="image-option" style="display: inline-block; margin: 5px; text-align: center;">
+                <input type="checkbox" name="{{ widget.name }}" value="{{ option.value }}" id="{{ widget.attrs.id }}_{{ index }}" {% if option.selected %}checked{% endif %} hidden>
+                <label style="min-width: 100px; width: 100px;" for="{{ widget.attrs.id }}_{{ index }}">
+                    {{ option.tag }}
+                    {{ option.label }}
+                </label>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
