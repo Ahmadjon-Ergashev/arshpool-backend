@@ -1,0 +1,30 @@
+version: '3.13'
+
+services:
+  backend:
+    build:
+      context: .
+    container_name: "arsh_backend"
+    restart: always
+    command: bash ./entrypoint.sh
+    volumes:
+      - .:/usr/backend
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    networks:
+      - arsh_network
+
+  redis:
+    image: "redis:latest"
+    container_name: "arsh_redis"
+    restart: always
+    networks:
+      - arsh_network
+
+networks:
+  arsh_network:
+
+# volumes:
+#   media_volume:

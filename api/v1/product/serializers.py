@@ -21,7 +21,21 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProductSerialier(serializers.ModelSerializer):
+class ProductListSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+    
+    def get_image(self, obj: Product):
+        main_image: Image = obj.images.filter(status="M").first()
+        if main_image:
+            return self.context['request'].build_absolute_uri(main_image.source.url)
+        return None
+
+    class Meta:
+        model = Product
+        fields = ["id", "name_uz", "name_ru", "price", "price_type", "image"]
+
+
+class ProductSerializer(serializers.ModelSerializer):
     images = ImageSerializer(many=True, read_only=True)
     category = CategorySerializer()
 
