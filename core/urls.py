@@ -40,8 +40,7 @@ urlpatterns = [
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('api.v1.landing.urls')),
-    path('api/v1/', include('api.v1.product.urls')),
+    path('api/v1/', include('api.v1.urls')),
 ]
 
 if settings.DEBUG:

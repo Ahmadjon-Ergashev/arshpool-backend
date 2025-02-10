@@ -44,6 +44,7 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    show_landing = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name_uz

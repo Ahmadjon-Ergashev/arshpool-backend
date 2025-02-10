@@ -82,6 +82,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "category",
                     "in_stock",
                     "images",
+                    "show_landing",
                 )
             },
         ),

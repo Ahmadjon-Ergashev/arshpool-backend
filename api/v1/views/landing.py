@@ -1,7 +1,9 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from apps.landing.models import Project
-from .serializers import ProjectSerialier
+from apps.product.models import Product
+from api.v1.serializers.product import ProductListSerializer
+from api.v1.serializers.landing import ProjectSerialier
 
 
 class ProjectViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
