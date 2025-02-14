@@ -3,11 +3,17 @@ from apps.product.models import Category, Product, Image
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    parent = serializers.SerializerMethodField()
+    childrens = serializers.SerializerMethodField()
+    products = serializers.SerializerMethodField()
 
-    def get_parent(self, obj):
-        if obj.parent:
-            return CategorySerializer(obj.parent).data
+    def get_childrens(self, obj: Category):
+        if obj.childrens.exists():
+            return CategorySerializer(obj.childrens, many=True, context=self.context).data
+        return None
+    
+    def get_products(self, obj: Category):
+        if obj.products.exists():
+            return ProductListSerializer(obj.products, many=True, context=self.context).data
         return None
 
     class Meta:

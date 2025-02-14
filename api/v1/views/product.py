@@ -25,5 +25,10 @@ class ProductViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
 class CategoryViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    lookup_field = "slug"
-    lookup_url_kwarg = "slug"
+    # lookup_field = "slug"
+    # lookup_url_kwarg = "slug"
+    
+    def get_queryset(self):
+        if self.action == "list":
+            return Category.objects.filter(parent=None)
+        return super().get_queryset()
