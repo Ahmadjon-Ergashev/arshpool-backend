@@ -122,9 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
-]
 STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
@@ -142,7 +139,4 @@ CORS_ORIGIN_WHITELIST = (
     'https://arshpool.uz',
     'https://www.arshpool.uz',
     'http://localhost:3000',
-    'http://localhost:3001',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:3001',
 )
