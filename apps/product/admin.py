@@ -18,7 +18,7 @@ class ImageGalleryWidget(forms.CheckboxSelectMultiple):
         try:
             image = Image.objects.get(pk=value)
             option['label'] = format_html(
-                '<img src="{}" style="width: 100px; height: 100px; display: block; margin: auto; object-fit: cover;">{}',
+                '<img src="{}" style="width: 70px; height: 70px; display: block; margin: auto; object-fit: cover;">{}',
                 image.source.url, label
             )
         except Image.DoesNotExist:
