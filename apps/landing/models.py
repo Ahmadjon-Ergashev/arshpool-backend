@@ -38,7 +38,7 @@ class ProjectImage(models.Model):
         null=True,
         validators=[
             FileExtensionValidator(
-                allowed_extensions=["jpg", "jpeg", "png", "gif", "webp", "mp4", "mov"]
+                allowed_extensions=["jpg", "jpeg", "png", "gif", "webp", "heic", "mp4", "mov"]
             )
         ],
     )
